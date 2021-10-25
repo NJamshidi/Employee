@@ -12,7 +12,7 @@ import java.util.List;
 public class EmployeeDao extends BaseDao {
     private static class SqlStatement {
         static final String INSERT_EMPLOYEE = "INSERT INTO employees (name ,personalCode ,salary ,inComeYear)  VALUES (?,?,?,?) ";
-        static final String REPORT_FROM_EMPLOYEE = "INSERT INTO employees (name ,personalCode ,salary ,inComeYear)  VALUES (?,?,?,?) ";
+        static final String REPORT_FROM_EMPLOYEE = "SELECT * FROM employees where inComeYear in (99,98,97,96,95) and ((salary between 1000000 and 5000000) or (salary between 5000000 and 10000000) or (salary >= 10000000) ) ORDER BY inComeYear DESC, salary ASC";
 
     }
 
@@ -34,9 +34,9 @@ public class EmployeeDao extends BaseDao {
         if (connection != null) {
             List<Employee> shoes = new ArrayList<>();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = statement.executeQuery(SqlStatement.REPORT_FROM_EMPLOYEE);
             while (resultSet.next()) {
-                Employee employee = new Employee(resultSet.getInt(1), resultSet.getInt(2), resultSet.getDouble(3), resultSet.getInt(4), resultSet.getString(5), TypeOfShoes.valueOf(resultSet.getString(6)));
+                Employee employee = new Employee(resultSet.getInt(1), resultSet.getString(2), resultSet.getInt(3), resultSet.getDouble(4), resultSet.getInt(5));
                 shoes.add(employee);
             }
             return shoes;

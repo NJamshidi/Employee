@@ -1,20 +1,26 @@
 package model;
 
 public class Employee {
+    private int id;
     private String name;
     private int personalCode;
     private double salary;
-    private MyDate date;
+    private int year;
 
-    public Employee(String name, int personalCode, double salary, MyDate date) {
+    public Employee(int id, String name, int personalCode, double salary, int year) {
+        this.id = id;
         this.name = name;
         this.personalCode = personalCode;
         this.salary = salary;
-        this.date = date;
+        this.year = year;
     }
 
-    public Employee() {
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,21 +47,22 @@ public class Employee {
         this.salary = salary;
     }
 
-    public MyDate getDate() {
-        return date;
+    public int getYear() {
+        return year;
     }
 
-    public void setDate(MyDate date) {
-        this.date = date;
+    public void setYear(int year) {
+        this.year = year;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", personalCode=" + personalCode +
                 ", salary=" + salary +
-                ", date=" + date +
+                ", year=" + year +
                 '}';
     }
 }

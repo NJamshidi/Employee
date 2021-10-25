@@ -1,5 +1,6 @@
 package view;
 
+import model.Employee;
 import model.MyDate;
 import service.EmployeeService;
 
@@ -37,8 +38,10 @@ public class Main {
                         employeeService.addEmployee(name, personalCode, salary, year);
                         break;
                     case 2:
+                        for (Employee employee:employeeService.getReport()) {
+                            System.out.println(employee);
+                        }
 
-                        employeeService.getReport();
 
                         break;
                     case 3:
