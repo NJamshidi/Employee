@@ -46,9 +46,11 @@ public class Main {
                     boolean check=true;
                     boolean checkSalary=true;
                     List<Employee> employee = employeeService.getReport();
+
                     try {
                         for (int i = 0; i < employee.size(); i++) {
                             if (check == true && employee.get(i + 1) != null && employee.get(i + 1).getYear() == employee.get(i).getYear()){
+
                                 System.out.print(no);
                                 System.out.print("  | ");
                                 System.out.print(employee.get(i).getYear());
@@ -93,6 +95,7 @@ public class Main {
                             if (employee.get(i + 1) != null && employee.get(i + 1).getYear() != employee.get(i).getYear()) {
                                 System.out.print("---+---------------");
                                 no++;
+
                             } else {
                                 System.out.print("                   ");
                             }
